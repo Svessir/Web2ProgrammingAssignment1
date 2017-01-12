@@ -33,6 +33,7 @@ function Rectange(){
     };
 
     this.draw = function draw(ctx){
+        var coord = this.getCanvasCoordinates(this.originX, this.originY);
         ctx.fillRect(this.originX, this.originY-140, this.width, this.height);
         ctx.stroke()
     };

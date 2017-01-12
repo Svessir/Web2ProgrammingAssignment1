@@ -41,6 +41,14 @@ Canvas.prototype.removeObject = function removeObject(drawable) {
     // TODO: implement
 }
 
+Canvas.prototype.getCanvasCoordinates = this.getCanvasCoordinates = function(x,y) {
+    var rect = this.canvasElement.getBoundingClientRect();
+    return {
+        x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
+        y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
+    };
+}
+
 /**
  * Set a new tool for the canvas
  */
