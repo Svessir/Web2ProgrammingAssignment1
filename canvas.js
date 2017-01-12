@@ -22,6 +22,20 @@ Canvas.prototype.update = function update() {
 }
 
 /**
+ * Adds an object to the list of objects in the canvas
+ */
+Canvas.prototype.addObject = function addObject(drawable) {
+    this.canvasObjects.push(drawable);
+}
+
+/**
+ * Removes the first instance of the object in backward creation order.
+ */
+Canvas.prototype.removeObject = function removeObject(drawable) {
+    // TODO: implement
+}
+
+/**
  * Set a new tool for the canvas
  */
 Canvas.prototype.setTool = function setTool(tool) {
