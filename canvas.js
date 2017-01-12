@@ -10,7 +10,7 @@ function Canvas(canvasElement) {
     this.redoStack = [];
     this.width = canvasElement.width;
     this.height = canvasElement.height;
-    this.i = 0;
+    this.offset = canvasElement.getBoundingClientRect();
 
     // Assign tool functions to canvas mouse event functions
     this.setTool(new RectTool(this)); // Insert default tool
@@ -23,7 +23,7 @@ function Canvas(canvasElement) {
 Canvas.prototype.update = function update() {
     this.canvasContext.clearRect(0,0,this.width, this.height);
     for (var i = 0; i < this.canvasObjects.length; i++){
-        this.canvasObjects[i].draw(this.canvasContext);
+        this.canvasObjects[i].draw(this.canvasContext, this.offset);
     }
 }
 
@@ -41,16 +41,19 @@ Canvas.prototype.removeObject = function removeObject(drawable) {
     // TODO: implement
 }
 
-Canvas.prototype.getCanvasCoordinates = this.getCanvasCoordinates = function(x,y) {
+/**
+ * Convert screen coordinates to canvas coordinates.
+ */
+Canvas.prototype.getCanvasCoordinates = function getCanvasCoordinates(x,y) {
     var rect = this.canvasElement.getBoundingClientRect();
     return {
-        x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
-        y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height
+        x: (x - rect.left) / (rect.right - rect.left) * this.width,
+        y: (y - rect.top) / (rect.bottom - rect.top) * this.height
     };
 }
 
 /**
- * Set a new tool for the canvas
+ * Set a new tool for the canvas.
  */
 Canvas.prototype.setTool = function setTool(tool) {
     this.canvasElement.onmousedown = function(event) {tool.mouseDown(event)};

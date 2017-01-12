@@ -1,3 +1,6 @@
+/**
+ * The Rectange object that can be drawn to canvas.
+ */
 function Rectange(){
     this.originX;
     this.originY;
@@ -29,12 +32,10 @@ function Rectange(){
             this.width   = origin_x - end_x;
             this.height  = origin_y - end_y;
         }
-        console.log(this);
     };
 
     this.draw = function draw(ctx){
-        var coord = this.getCanvasCoordinates(this.originX, this.originY);
-        ctx.fillRect(this.originX, this.originY-140, this.width, this.height);
+        ctx.fillRect(this.originX, this.originY, this.width, this.height);
         ctx.stroke()
     };
 }
