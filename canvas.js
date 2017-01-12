@@ -10,7 +10,7 @@ function Canvas(canvasElement) {
     this.redoStack = [];
     this.width = canvasElement.width;
     this.height = canvasElement.height;
-    this.i = 0;
+    this.offset = canvasElement.getBoundingClientRect();
 
     // Assign tool functions to canvas mouse event functions
     this.setTool(new RectTool(this)); // Insert default tool
@@ -21,9 +21,10 @@ function Canvas(canvasElement) {
  * in the canvas object list back to the canvas.
  */
 Canvas.prototype.update = function update() {
+    console.log(this.offset);
     this.canvasContext.clearRect(0,0,this.width, this.height);
     for (var i = 0; i < this.canvasObjects.length; i++){
-        this.canvasObjects[i].draw(this.canvasContext);
+        this.canvasObjects[i].draw(this.canvasContext, this.offset);
     }
 }
 

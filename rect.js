@@ -32,8 +32,10 @@ function Rectange(){
         console.log(this);
     };
 
-    this.draw = function draw(ctx){
-        ctx.fillRect(this.originX, this.originY-140, this.width, this.height);
+    this.draw = function draw(ctx, offset){
+        //var offset = ctx.getBoundingClientRect();
+        //console.log(offset);
+        ctx.fillRect(this.originX - offset.left, this.originY - offset.top, this.width, this.height);
         ctx.stroke()
     };
 }
