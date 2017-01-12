@@ -10,28 +10,24 @@ function Rectange(){
             this.originY = origin_y;
             this.width   = end_x - origin_x;
             this.height  = end_y - origin_y;
-            console.log("if 1");
         }
         else if (origin_x <= end_x && origin_y > end_y){
             this.originX = origin_x;
             this.originY = end_y;
             this.width   = end_x - origin_x;
             this.height  = origin_y - end_y;
-            console.log("if 2");
         }
         else if (origin_x > end_x && origin_y <= end_x){
             this.originX = end_x;
             this.originY = origin_y;
             this.width   = origin_x - end_x;
             this.height  = end_y - origin_y;
-            console.log("if 3");
         }
         else{
             this.originX = end_x;
             this.originY = end_y;
             this.width   = origin_x - end_x;
             this.height  = origin_y - end_y;
-            console.log("if 4");
         }
         console.log(this);
     };
