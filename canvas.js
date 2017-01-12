@@ -38,7 +38,12 @@ Canvas.prototype.addObject = function addObject(drawable) {
  * Removes the first instance of the object in backward creation order.
  */
 Canvas.prototype.removeObject = function removeObject(drawable) {
-    // TODO: implement
+    for(var i = this.canvasObjects.length - 1; i >= 0; i--) {
+        if(this.canvasObjects[i] == drawable) {
+            this.canvasObjects.splice(i, 1);
+            return;
+        }
+    }
 }
 
 /**
@@ -50,6 +55,35 @@ Canvas.prototype.getCanvasCoordinates = function getCanvasCoordinates(x,y) {
         x: (x - rect.left) / (rect.right - rect.left) * this.width,
         y: (y - rect.top) / (rect.bottom - rect.top) * this.height
     };
+}
+
+/**
+ * Adds a command to the undo stack.
+ */
+Canvas.prototype.addCommand = function addCommand(command) {
+    this.undoStack.push(command);
+}
+
+/**
+ * Undoes the latest command on the undoStack.
+ */
+Canvas.prototype.undo = function undo() {
+    if(this.undoStack.length > 0) {
+        var command = this.undoStack.pop();
+        command.undo();
+        this.redoStack.push(command);
+    }
+}
+
+/**
+ * Redoes the latest command on the redoStack.
+ */
+Canvas.prototype.redo = function redo() {
+    if(this.redoStack.length > 0) {
+        var command = this.redoStack.pop();
+        command.redo();
+        this.undoStack.push(command);
+    }
 }
 
 /**
