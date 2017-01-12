@@ -18,7 +18,6 @@ function Canvas(canvasElement) {
  * in the canvas object list back to the canvas.
  */
 Canvas.prototype.update = function update() {
-
 }
 
 /**
