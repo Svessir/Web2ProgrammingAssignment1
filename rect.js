@@ -4,34 +4,36 @@ function Rectange(){
     this.width;
     this.height;
     
-    this.setCoordinates = function setCoordinates(origin, end){
-        if (origin.x <= end.x && origin.y <= end.y){
-            this.originX = origin.x;
-            this.originY = origin.y;
-            this.width   = end.x - origin.x;
-            this.height  = end.y - origin.y;
+    this.setCoordinates = function setCoordinates(origin_x, origin_y, end_x, end_y){
+        if (origin_x <= end_x && origin_y <= end_y){
+            this.originX = origin_x;
+            this.originY = origin_y;
+            this.width   = end_x - origin_x;
+            this.height  = end_y - origin_y;
         }
-        else if (origin.x <= end.x && origin.y > end.y){
-            this.originX = origin.x;
-            this.originY = end.y;
-            this.width   = end.x - origin.x;
-            this.height  = origin.y - end.y;
+        else if (origin_x <= end_x && origin_y > end_y){
+            this.originX = origin_x;
+            this.originY = end_y;
+            this.width   = end_x - origin_x;
+            this.height  = origin_y - end_y;
         }
-        else if (origin.x > end.x && origin.y <= end.x){
-            this.originX = end.x;
-            this.originY = origin.y;
-            this.width   = origin.x - end.x;
-            this.height  = end.y - origin.y;
+        else if (origin_x > end_x && origin_y <= end_x){
+            this.originX = end_x;
+            this.originY = origin_y;
+            this.width   = origin_x - end_x;
+            this.height  = end_y - origin_y;
         }
         else{
-            this.originX = end.x;
-            this.originY = end.y;
-            this.width   = origin.x - end.x;
-            this.height  = origin.y - end.y;
+            this.originX = end_x;
+            this.originY = end_y;
+            this.width   = origin_x - end_x;
+            this.height  = origin_y - end_y;
         }
+        console.log(this);
     };
 
     this.draw = function draw(ctx){
-        ctx.rect(this.originX, this.originY, this.width, this.height);
+        ctx.fillRect(this.originX, this.originY, this.width, this.height);
+        ctx.stroke();
     };
 }
