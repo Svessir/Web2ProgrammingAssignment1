@@ -30,4 +30,8 @@ function Rectange(){
             this.height  = origin.y - end.y;
         }
     };
+
+    this.draw = function draw(ctx){
+        ctx.rect(this.originX, this.originY, this.width, this.height);
+    };
 }
