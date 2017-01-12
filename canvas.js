@@ -10,7 +10,7 @@ function Canvas(canvasElement) {
     this.redoStack = [];
 
     // Assign tool functions to canvas mouse event functions
-    this.setTool(undefined); // Insert default tool
+    this.setTool(new RectTool(this)); // Insert default tool
 }
 
 /**
