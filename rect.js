@@ -37,7 +37,7 @@ function Rectange(){
     };
 
     this.draw = function draw(ctx){
-        ctx.rect(this.originX, this.originY, this.width, this.height);
+        ctx.fillRect(this.originX, this.originY-140, this.width, this.height);
         ctx.stroke()
     };
 }

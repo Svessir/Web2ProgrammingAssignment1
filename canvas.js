@@ -22,7 +22,8 @@ function Canvas(canvasElement) {
 Canvas.prototype.update = function update() {
     //console.log("Update");
     this.canvasContext.clearRect(0,0,this.width, this.height);
-    
+    console.log(this);
+
     for (var i = 0; i < this.canvasObjects.length; i++){
         this.canvasObjects[i].draw(this.canvasContext);
       //  console.log("Update forloop");
