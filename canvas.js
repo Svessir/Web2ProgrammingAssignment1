@@ -8,6 +8,8 @@ function Canvas(canvasElement) {
     this.canvasObjects = [];
     this.undoStack = [];
     this.redoStack = [];
+    this.width = canvasElement.width;
+    this.height = canvasElement.height;
 
     // Assign tool functions to canvas mouse event functions
     this.setTool(new RectTool(this)); // Insert default tool
@@ -18,7 +20,13 @@ function Canvas(canvasElement) {
  * in the canvas object list back to the canvas.
  */
 Canvas.prototype.update = function update() {
-
+    //console.log("Update");
+    this.canvasContext.clearRect(0,0,this.width, this.height);
+    
+    for (var i = 0; i < this.canvasObjects.length; i++){
+        this.canvasObjects[i].draw(this.canvasContext);
+      //  console.log("Update forloop");
+    }
 }
 
 /**
