@@ -1,5 +1,5 @@
 /**
- * The Rectange object that can be drawn to canvas.
+ * The Rectangle object that can be drawn to canvas.
  */
 function Rectangle(){
     this.originX;
@@ -51,4 +51,12 @@ Rectangle.prototype.draw = function draw(ctx){
 Rectangle.prototype.move = function move(vector2D) {
     this.originX += vector2D.x;
     this.originY += vector2D.y;
+}
+
+/**
+ * Checks if the Rectangle contains the coordinate
+ */
+Rectangle.prototype.containsCoordinates = function containsCoordinates(x,y) {
+    return x >= this.originX && x <= this.originX + this.width &&
+           y >= this.originY && y <= this.originY + this.height; 
 }
