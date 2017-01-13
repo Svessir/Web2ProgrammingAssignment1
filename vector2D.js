@@ -13,6 +13,9 @@ Vector2D.prototype.reversed = function reversed() {
     return new Vector2D(-this.x, -this.y);
 }
 
+/**
+ * Returns the length of the vector.
+ */
 Vector2D.prototype.length = function length() {
     return Math.sqrt(this.x * this.x + this.y * this.y);
 }
