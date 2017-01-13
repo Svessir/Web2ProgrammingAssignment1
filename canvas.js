@@ -13,7 +13,7 @@ function Canvas(canvasElement) {
     this.offset = canvasElement.getBoundingClientRect();
 
     // Assign tool functions to canvas mouse event functions
-    this.setTool(new RectTool(this)); // Insert default tool
+    this.setTool(new CircleTool(this)); // Insert default tool
 }
 
 /**

@@ -17,7 +17,7 @@ function RectTool(canvas){
  * Instantiates a rectangle on the canvas.
  */
 RectTool.prototype.mouseDown = function mouseDown(event){
-    if(this.mouseIsDown == true)
+    if(this.mouseIsDown)
         return;
 
     var canvasCoordDown = this.canvas.getCanvasCoordinates(event.clientX, event.clientY);
