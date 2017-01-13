@@ -39,7 +39,7 @@ Canvas.prototype.addObject = function addObject(drawable) {
  */
 Canvas.prototype.removeObject = function removeObject(drawable) {
     for(var i = this.canvasObjects.length - 1; i >= 0; i--) {
-        if(this.canvasObjects[i] == drawable) {
+        if(this.canvasObjects[i] === drawable) {
             this.canvasObjects.splice(i, 1);
             return;
         }
@@ -84,6 +84,18 @@ Canvas.prototype.redo = function redo() {
         command.redo();
         this.undoStack.push(command);
     }
+}
+
+/**
+ * Returns the most latest object in the canvasObjects list that contains the
+ * provided coordinates.
+ */
+Canvas.prototype.getFirstObjectHit = function getFirstObjectHit(x,y) {
+    for(var i = this.canvasObjects.length - 1; i >= 0; i--) {
+        if(this.canvasObjects[i].containsCoordinates(x,y))
+            return this.canvasObjects[i];
+    }
+    return null;
 }
 
 /**
