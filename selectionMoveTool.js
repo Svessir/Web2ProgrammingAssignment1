@@ -23,7 +23,7 @@ SelectionMoveTool.prototype.mouseDown = function mouseDown(event){
     
     // If no object was clicked then clear the selection
     if(this.hit == null)
-        this.selected = [];
+        this.clearSelection();
     this.canvas.update();
 };
 
@@ -138,4 +138,14 @@ SelectionMoveTool.prototype.removeFromSelection = function removeFromSelection(o
             this.selected.splice(i, 1);
         }
     }
+}
+
+/**
+ * Clears the selection.
+ */
+SelectionMoveTool.prototype.clearSelection = function clearSelection(){
+    for(var i = 0; i < this.selected.length; i++) {
+        this.selected[i].setHighlight(false);
+    }
+    this.selected = [];
 }
