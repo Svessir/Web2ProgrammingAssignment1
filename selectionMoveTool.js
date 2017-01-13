@@ -24,6 +24,7 @@ SelectionMoveTool.prototype.mouseDown = function mouseDown(event){
     // If no object was clicked then clear the selection
     if(this.hit == null)
         this.selected = [];
+    this.canvas.update();
 };
 
 /**
@@ -44,7 +45,7 @@ SelectionMoveTool.prototype.mouseMove = function mouseMove(event) {
     // Add newly clicked object if it was not in selection and a drag has been started.
     if(oldDrag === false && this.isDrag) {
         if(!this.isInSelection(this.hit))
-            this.selected.push(this.hit);
+            this.addToSelection(this.hit);
     }
 
     if(this.isDrag) 
@@ -72,13 +73,14 @@ SelectionMoveTool.prototype.mouseUp = function mouseUp(event){
         if(this.isInSelection(this.hit))
             this.removeFromSelection(this.hit);
         else
-            this.selected.push(this.hit);
+            this.addToSelection(this.hit);
         this.hit = null;
     }
 
     this.isMouseDown = false;
     this.isDrag = false;
     this.moveVector = new Vector2D(0,0);
+    this.canvas.update();
 }
 
 /**
@@ -119,11 +121,21 @@ SelectionMoveTool.prototype.reverseMove = function reverseMove(vector){
 }
 
 /**
+ * Add an item to the selection
+ */
+SelectionMoveTool.prototype.addToSelection = function addToSelection(object){
+    this.selected.push(object);
+    object.setHighlight(true);
+}
+
+/**
  * Removes an item from the selection
  */
 SelectionMoveTool.prototype.removeFromSelection = function removeFromSelection(object){
     for(var i = 0; i < this.selected.length; i++) {
-        if(this.selected[i] === object)
+        if(this.selected[i] === object) {
+            object.setHighlight(false);
             this.selected.splice(i, 1);
+        }
     }
 }
