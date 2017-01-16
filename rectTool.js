@@ -50,4 +50,5 @@ RectTool.prototype.mouseMove = function mouseMove(event){
 RectTool.prototype.mouseUp = function mouseUp(event){
     this.mouseIsDown = false;
     this.canvas.addCommand(new CreationCommand(this.currentRectangle, this.canvas));
+    this.currentRectangle = null;
 }

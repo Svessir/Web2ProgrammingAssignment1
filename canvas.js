@@ -23,7 +23,7 @@ function Canvas(canvasElement) {
 Canvas.prototype.update = function update() {
     this.canvasContext.clearRect(0,0,this.width, this.height);
     for (var i = 0; i < this.canvasObjects.length; i++){
-        this.canvasObjects[i].draw(this.canvasContext, this.offset);
+        this.canvasObjects[i].draw(this.canvasContext);
     }
 }
 
