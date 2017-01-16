@@ -59,13 +59,6 @@ class Rectangle extends Shape {
     }
 
     /**
-     * Set if the rectangle will be highlighted during draw.
-     */
-    setHighlight(isHighlight) {
-        this.isHighlight = isHighlight;
-    }
-
-    /**
      * Checks if the Rectangle contains the coordinate
      */
     containsCoordinates(x,y) {
