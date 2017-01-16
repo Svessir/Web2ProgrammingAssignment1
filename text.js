@@ -1,9 +1,10 @@
 /**
  * The text canvas object
  */
-class Text {
+class Text extends Shape {
 
     constructor() {
+        super();
     }
 
     /**

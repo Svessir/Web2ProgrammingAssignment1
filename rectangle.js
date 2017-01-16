@@ -1,11 +1,10 @@
 /**
  * The Rectangle object that can be drawn to canvas.
  */
-class Rectangle {
+class Rectangle extends Shape {
 
     constructor() {
-        this.originX;
-        this.originY;
+        super();
         this.width;
         this.height;
         this.isHighlight = false;
@@ -57,14 +56,6 @@ class Rectangle {
         ctx.fillRect(this.originX, this.originY, this.width, this.height);
         ctx.stroke();
         ctx.closePath();
-    }
-
-    /**
-     * Moves the rectangle along the provided vector
-     */
-    move(vector2D) {
-        this.originX += vector2D.x;
-        this.originY += vector2D.y;
     }
 
     /**

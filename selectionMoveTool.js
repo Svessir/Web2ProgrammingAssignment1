@@ -1,13 +1,11 @@
 /**
  * Tool that handles selecting and moving canvas Objects
  */
-class SelectionMoveTool {
+class SelectionMoveTool extends Tool {
 
     constructor(canvas) {
-        this.canvas = canvas;
+        super(canvas);
         this.selected = [];
-        this.isMouseDown = false;
-        this.mouseDownPoint = {x:0, y:0};
         this.moveVector = new Vector2D(0,0);
         this.hit = null;
         this.isDrag = false;

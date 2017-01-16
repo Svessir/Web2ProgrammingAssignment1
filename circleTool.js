@@ -2,11 +2,10 @@
 /**
  * Tool that handles creation of Circles on the canvas.
  */
-class CircleTool {
+class CircleTool extends Tool {
 
     constructor(canvas){
-        this.mouseDownPoint;
-        this.isMouseDown = false;
+        super();
         this.currentCircle;
         this.canvas = canvas;
     }
@@ -24,7 +23,6 @@ class CircleTool {
         this.currentCircle.setCircleInfo(this.mouseDownPoint.x, this.mouseDownPoint.y, this.mouseDownPoint.x, this.mouseDownPoint.y);
         this.canvas.addObject(this.currentCircle);
         this.canvas.update();
-        console.log(this);
     }
 
     /**
@@ -35,7 +33,6 @@ class CircleTool {
             var currentPoint = this.canvas.getCanvasCoordinates(event.clientX, event.clientY);
             this.currentCircle.setCircleInfo(this.mouseDownPoint.x, this.mouseDownPoint.y, currentPoint.x, currentPoint.y);
             this.canvas.update();
-            console.log(this);
         }
     }
 
@@ -47,6 +44,5 @@ class CircleTool {
         this.isMouseDown = false;
         this.canvas.addCommand(new CreationCommand(this.currentCircle, this.canvas));
         this.currentCircle = null;
-        console.log(this);
     }
 }

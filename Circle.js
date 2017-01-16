@@ -1,11 +1,10 @@
 /**
  * The Circle object that can be drawn to canvas.
  */
-class Circle {
+class Circle extends Shape {
     
     constructor(){
-        this.originX;
-        this.originY;
+        super();
         this.radius;
         this.isHighlight = false;
     }
@@ -17,7 +16,6 @@ class Circle {
         this.originX = origin_x;
         this.originY = origin_y;
         this.radius = this.calcRadius(this.originX, this.originY, end_x, end_y);
-        console.log(this);
     }
 
     /**
@@ -29,21 +27,6 @@ class Circle {
         ctx.fill()
         ctx.stroke();
         ctx.closePath();
-    }
-
-    /**
-     * Moves the circle along the provided vector
-     */
-    move(vector2D) {
-        this.originX += vector2D.x;
-        this.originY += vector2D.y;
-    }
-
-    /**
-     * Set if the circle will be highlighted during draw.
-     */
-    setHighlight(isHighlight) {
-        this.isHighlight = isHighlight;
     }
 
     /**

@@ -1,9 +1,10 @@
 /**
  * The text tool handles writing text on the canvas
  */
-class TextTool {
+class TextTool extends Tool {
 
     constructor(canvas, textAreaElement) {
+        super(canvas);
     }
 
     /**
