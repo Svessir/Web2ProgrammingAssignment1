@@ -4,7 +4,7 @@
  */
 function Canvas(canvasElement) {
     this.canvasElement = canvasElement;
-    this.canvasContext = canvasElement.getContext("2d");;
+    this.canvasContext = canvasElement.getContext("2d");
     this.canvasObjects = [];
     this.undoStack = [];
     this.redoStack = [];

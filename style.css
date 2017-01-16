@@ -13,3 +13,10 @@
   border: 1px solid #e7e7e7;
   padding: 5px;
 }
+#canvas-text {
+  position: absolute;
+  /*display: none;*/
+  font-size: 10px;
+  width: 60px;
+  height: 60px;
+}

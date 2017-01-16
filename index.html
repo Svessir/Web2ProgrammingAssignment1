@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Canvas</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="startApplication.js"></script>
     <script src="canvas.js"></script>
     <script src="rectTool.js"></script>
@@ -12,6 +13,8 @@
     <script src="selectionMoveTool.js"></script>
     <script src="moveCommand.js"></script>
     <script src="vector2D.js"></script>
+    <script src="textTool.js"></script>
+    <script src="text.js"></script>
     <!--<script src="circleTool.js"></script>-->
     <!--<script src="circle.js"></script>-->
     
@@ -19,6 +22,7 @@
   <body>
       <h1>Canvas pencil, undo, redo</h1>
       <p>Click the pencil button and draw over the canvas. Use undo and redo buttons to navigate through states.</p>
+      <textarea id="canvas-text"></textarea>
       <div id="controllers">
           <span class="controller" id="undo">undo</span>  
           <span class="controller" id="redo">redo</span>

@@ -8,6 +8,7 @@ function Rectangle(){
     this.height;
     this.isHighlight = false;
 }
+
 /**
  * Changes the origin point, width and height of the rectangle.
  */
@@ -42,15 +43,18 @@ Rectangle.prototype.setCoordinates = function setCoordinates(origin_x, origin_y,
  * Draws the Rectangle to the provided canvas context.
  */
 Rectangle.prototype.draw = function draw(ctx){
+    ctx.beginPath();
     if(this.isHighlight) {
-        ctx.fillStyle="#FF0000";
-        ctx.fillRect(this.originX - 1, this.originY - 1, this.width + 2, this.height + 2);
+        ctx.setLineDash([3,6]);
+        ctx.rect(this.originX - 1, this.originY - 1, this.width + 2, this.height + 2);
         ctx.stroke();
+        ctx.setLineDash([1,0]);
     }
 
     ctx.fillStyle="black";
     ctx.fillRect(this.originX, this.originY, this.width, this.height);
     ctx.stroke();
+    ctx.closePath();
 }
 
 /**
