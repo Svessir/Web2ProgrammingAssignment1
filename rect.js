@@ -1,81 +1,84 @@
 /**
  * The Rectangle object that can be drawn to canvas.
  */
-function Rectangle(){
-    this.originX;
-    this.originY;
-    this.width;
-    this.height;
-    this.isHighlight = false;
-}
+class Rectangle {
 
-/**
- * Changes the origin point, width and height of the rectangle.
- */
-Rectangle.prototype.setCoordinates = function setCoordinates(origin_x, origin_y, end_x, end_y){
-    if (origin_x <= end_x && origin_y <= end_y){
-        this.originX = origin_x;
-        this.originY = origin_y;
-        this.width   = end_x - origin_x;
-        this.height  = end_y - origin_y;
+    constructor() {
+        this.originX;
+        this.originY;
+        this.width;
+        this.height;
+        this.isHighlight = false;
     }
-    else if (origin_x <= end_x && origin_y > end_y){
-        this.originX = origin_x;
-        this.originY = end_y;
-        this.width   = end_x - origin_x;
-        this.height  = origin_y - end_y;
-    }
-    else if (origin_x > end_x && origin_y <= end_x){
-        this.originX = end_x;
-        this.originY = origin_y;
-        this.width   = origin_x - end_x;
-        this.height  = end_y - origin_y;
-    }
-    else{
-        this.originX = end_x;
-        this.originY = end_y;
-        this.width   = origin_x - end_x;
-        this.height  = origin_y - end_y;
-    }
-}
 
-/**
- * Draws the Rectangle to the provided canvas context.
- */
-Rectangle.prototype.draw = function draw(ctx){
-    ctx.beginPath();
-    if(this.isHighlight) {
-        ctx.setLineDash([3,6]);
-        ctx.rect(this.originX - 1, this.originY - 1, this.width + 2, this.height + 2);
+    /**
+     * Changes the origin point, width and height of the rectangle.
+     */
+    setCoordinates(origin_x, origin_y, end_x, end_y){
+        if (origin_x <= end_x && origin_y <= end_y){
+            this.originX = origin_x;
+            this.originY = origin_y;
+            this.width   = end_x - origin_x;
+            this.height  = end_y - origin_y;
+        }
+        else if (origin_x <= end_x && origin_y > end_y){
+            this.originX = origin_x;
+            this.originY = end_y;
+            this.width   = end_x - origin_x;
+            this.height  = origin_y - end_y;
+        }
+        else if (origin_x > end_x && origin_y <= end_x){
+            this.originX = end_x;
+            this.originY = origin_y;
+            this.width   = origin_x - end_x;
+            this.height  = end_y - origin_y;
+        }
+        else{
+            this.originX = end_x;
+            this.originY = end_y;
+            this.width   = origin_x - end_x;
+            this.height  = origin_y - end_y;
+        }
+    }
+
+    /**
+     * Draws the Rectangle to the provided canvas context.
+     */
+    draw(ctx){
+        ctx.beginPath();
+        if(this.isHighlight) {
+            ctx.setLineDash([3,6]);
+            ctx.rect(this.originX - 1, this.originY - 1, this.width + 2, this.height + 2);
+            ctx.stroke();
+            ctx.setLineDash([1,0]);
+        }
+
+        ctx.fillStyle="black";
+        ctx.fillRect(this.originX, this.originY, this.width, this.height);
         ctx.stroke();
-        ctx.setLineDash([1,0]);
+        ctx.closePath();
     }
 
-    ctx.fillStyle="black";
-    ctx.fillRect(this.originX, this.originY, this.width, this.height);
-    ctx.stroke();
-    ctx.closePath();
-}
+    /**
+     * Moves the rectangle along the provided vector
+     */
+    move(vector2D) {
+        this.originX += vector2D.x;
+        this.originY += vector2D.y;
+    }
 
-/**
- * Moves the rectangle along the provided vector
- */
-Rectangle.prototype.move = function move(vector2D) {
-    this.originX += vector2D.x;
-    this.originY += vector2D.y;
-}
+    /**
+     * Set if the rectangle will be highlighted during draw.
+     */
+    setHighlight(isHighlight) {
+        this.isHighlight = isHighlight;
+    }
 
-/**
- * Set if the rectangle will be highlighted during draw.
- */
-Rectangle.prototype.setHighlight = function setHighlight(isHighlight) {
-    this.isHighlight = isHighlight;
-}
-
-/**
- * Checks if the Rectangle contains the coordinate
- */
-Rectangle.prototype.containsCoordinates = function containsCoordinates(x,y) {
-    return x >= this.originX && x <= this.originX + this.width &&
-           y >= this.originY && y <= this.originY + this.height; 
+    /**
+     * Checks if the Rectangle contains the coordinate
+     */
+    containsCoordinates(x,y) {
+        return x >= this.originX && x <= this.originX + this.width &&
+            y >= this.originY && y <= this.originY + this.height; 
+    }
 }

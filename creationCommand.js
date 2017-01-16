@@ -2,23 +2,26 @@
 /**
  * Command that handles object creation.
  */
-function CreationCommand(canvasDrawable, canvas) {
-    this.canvas = canvas;
-    this.object = canvasDrawable;
-}
+class CreationCommand {
 
-/**
- * Removes the object from the canvas.
- */
-CreationCommand.prototype.undo = function undo() {
-    this.canvas.removeObject(this.object);
-    this.canvas.update();
-}
+    constructor(canvasDrawable, canvas) {
+        this.canvas = canvas;
+        this.object = canvasDrawable;
+    }
 
-/**
- * Adds the object to the canvas.
- */
-CreationCommand.prototype.redo = function redo() {
-    this.canvas.addObject(this.object);
-    this.canvas.update();
+    /**
+     * Removes the object from the canvas.
+     */
+    undo() {
+        this.canvas.removeObject(this.object);
+        this.canvas.update();
+    }
+
+    /**
+     * Adds the object to the canvas.
+     */
+    redo() {
+        this.canvas.addObject(this.object);
+        this.canvas.update();
+    }
 }
