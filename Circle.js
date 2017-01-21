@@ -10,7 +10,7 @@ class Circle extends Shape {
     }
 
     /**
-     * Changes the origin point, width and height of the rectangle.
+     * Changes the origin point, width and height of the circle.
      */
     setCircleInfo(origin_x, origin_y, end_x, end_y){
         this.originX = origin_x;
@@ -30,7 +30,7 @@ class Circle extends Shape {
     }
 
     /**
-     * Checks if the Circle contains the coordinate
+     * Checks if the circle contains the coordinate
      */
     containsCoordinates(x,y) {
         return this.radius >= this.calcRadius(this.originX, this.originY, x, y);

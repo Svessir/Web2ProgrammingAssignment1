@@ -22,4 +22,10 @@ class Vector2D {
         return Math.sqrt(this.x * this.x + this.y * this.y);
     }
 
+    normalize() {
+        var length = this.length();
+        this.x = this.x / length;
+        this.y = this.y / length;
+    }
+
 }
