@@ -17,6 +17,14 @@
   position: absolute;
   display: none;
   font-size: 10px;
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
+  resize: none;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#width-element {
+  /*display: none;*/
+  overflow:hidden;
 }

@@ -60,6 +60,17 @@ class Canvas {
     }
 
     /**
+     * Convert canvas coordinates to screen coordinates.
+     */
+    getScreenCoordinates(x,y) {
+        var rect = this.canvasElement.getBoundingClientRect();
+        return {
+            x: (x + rect.left),
+            y: (y + rect.top)
+        };
+    }
+
+    /**
      * Adds a command to the undo stack.
      */
     addCommand(command) {
