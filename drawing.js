@@ -1,4 +1,4 @@
-class Pen extends Shape {
+class Drawing extends Shape {
     constructor(){
         super();
         this.currentDrawing = [];

@@ -17,7 +17,7 @@ class PenTool extends Tool {
         }
         this.mouseDownPoint = this.canvas.getCanvasCoordinates(event.clientX, event.clientY);
         this.isMouseDown = true;
-        this.currentPen = new Pen();
+        this.currentPen = new Drawing();
         this.currentLine = new Line();
         this.currentLine.setLineInfo(this.mouseDownPoint.x, this.mouseDownPoint.y,
                                 this.mouseDownPoint.x, this.mouseDownPoint.y);
