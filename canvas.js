@@ -15,7 +15,7 @@ class Canvas {
         this.offset = canvasElement.getBoundingClientRect();
 
         // Assign tool functions to canvas mouse event functions
-        this.setTool(new LineTool(this)); // Insert default tool
+        this.setTool(new PenTool(this)); // Insert default tool
     }
 
     /**

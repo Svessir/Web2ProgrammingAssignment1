@@ -29,7 +29,15 @@ class LineTool extends Tool{
     mouseMove(event){
         if(this.isMouseDown){
             var canvasCoordMove = this.canvas.getCanvasCoordinates(event.clientX, event.clientY);
-            this.currentLine.setLineInfo(this.mouseDownPoint.x, this.mouseDownPoint.y, canvasCoordMove.x, canvasCoordMove.y);
+            if (event.ctrlKey){
+                this.currentLine.setLineInfo(this.mouseDownPoint.x, this.mouseDownPoint.y, this.mouseDownPoint.x, canvasCoordMove.y);
+            }
+            else if (event.shiftKey){
+                this.currentLine.setLineInfo(this.mouseDownPoint.x, this.mouseDownPoint.y, canvasCoordMove.x, this.mouseDownPoint.y);
+            }
+            else {
+                this.currentLine.setLineInfo(this.mouseDownPoint.x, this.mouseDownPoint.y, canvasCoordMove.x, canvasCoordMove.y);
+            }
             this.canvas.update();
         }
     }

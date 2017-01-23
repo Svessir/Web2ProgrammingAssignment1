@@ -38,7 +38,6 @@ class Line extends Shape {
             x : perpVector.y,
             y : -perpVector.x
         }
-        console.log(this.perp);
         this.upVec = {
             x : this.perp.x,
             y : this.perp.y
@@ -47,7 +46,6 @@ class Line extends Shape {
             x : -this.upVec.x,
             y : -this.upVec.y
         };
-        console.log(this);
     }
 
     /**
@@ -129,14 +127,12 @@ class Line extends Shape {
             x : this.endX + this.downVec.x,
             y : this.endY + this.downVec.y
         };
-        console.log(this);
         var triangle_1 = new Triangle(point, this.originUp, this.originDown);
         var triangle_2 = new Triangle(point, this.originUp, this.endUp);
         var triangle_3 = new Triangle(point, this.originDown, this.endDown);
         var triangle_4 = new Triangle(point, this.endUp, this.endDown);
         var triangeArea = triangle_1.area() + triangle_2.area() + 
                         triangle_3.area() + triangle_4.area();
-        console.log("Triange Area : " + triangeArea);
         return triangeArea;
     }
 
@@ -157,7 +153,6 @@ class Line extends Shape {
             x : x,
             y : y
         };
-        console.log("Area : " + area);
         return area >= this.calculatePointArea(point) && 
                 this.length() > this.lengthToOrigin(point) &&
                 this.length() > this.lengthToEnd(point);

@@ -14,8 +14,4 @@ window.onload = function () {
             canvas.setTool(new SelectionMoveTool(canvas));
     }
     document.onkeydown = KeyPress;
-    
-    var txtTool = new TextTool(canvas, $("#canvas-text"), $("#width-element"));
-    canvas.setTool(txtTool);
-    Helper.ctx = canvasElement.getContext("2d");
 }
